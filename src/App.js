@@ -112,7 +112,7 @@ class App extends Component {
           </button>
         </div>
         <div className="createExerciseForm">
-          POST /api/exercise/add
+          POST /api/exercise/new-exercise
           <input
             className="exercise_input"
             id="exInput_userId"
