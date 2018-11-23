@@ -1,23 +1,158 @@
 import React, { Component } from "react";
 import "./styles.css";
+import axios from "axios";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      URL: "http://localhost:5000/",
+      newUser: "",
+      userId: null,
+      username: null,
+      description: null,
+      duration: null,
+      date: null,
+      redirect: false,
+    };
+  }
+
+  handleChange = (field, value) => {
+    this.setState({ [field]: value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const {userId, description, duration, date, newUser, URL } = this.state
+
+    if (e.target.name === "submitNewUser") {
+      if (newUser === "") {
+        alert("Sorry! Please enter a username!");
+        return;
+      }
+      axios
+        .post(`${URL}api/exercise/new-user/`, {
+          username: newUser
+        })
+        .then(response => {
+          alert(`New User ${newUser} Successfully Added!`)
+          window.location.href = `${URL}api/exercise/users/${response.data._id}`;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+
+    if (e.target.name === "submitNewExercise") {
+      if (userId === null) {
+        alert("Sorry! A valid userId is required");
+        return
+      }
+      if (description === null){
+        alert("Sorry! A valid description is required");
+        return
+      }
+      if (duration === null){
+        alert("Sorry! A valid duration is required");
+        return
+      }
+      if (date === null){
+        alert("Sorry! A valid date is required");
+        return
+      } else if (!Date.parse(date)){
+        alert("Please ensure the date provided is both valid and correctly formatted (e.g. YYYY-MM-DD)")
+      }
+      
+      if (userId&&description&&duration&&Date.parse(date)){
+        axios
+        .get(`${URL}api/exercise/users/${userId}`)
+        .then(response => {
+          axios
+            .post(`${URL}api/exercise/new-exercise/`, {
+              username: response.data.username,
+              userId: userId,
+              description: description,
+              duration: duration,
+              date: date
+            })
+            .then(response => {
+              alert("New Exercise Added!")
+              window.location.href = `${URL}api/exercise/logs/${response.data._id}`;
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        })
+        .catch(err => {
+          console.log(err);
+          alert("Please make sure you enter a valid userId");
+        });
+      }
+      
+    }
+  };
+
   render() {
     return (
       <div className="App">
-        <div className="title">Exercise Tracker</div>
+        <div className="App_title">Exercise Tracker</div>
         <div className="createUserForm">
           POST /api/exercise/new-user
-          <input className="create_input" placeholder="username" />
-          <button>Submit</button>
+          <input
+            className="user_input"
+            placeholder="username"
+            onChange={event => this.handleChange("newUser", event.target.value)}
+            type="text"
+            value={this.state.newUser}
+            required
+          />
+          <button onClick={this.handleSubmit} name="submitNewUser">
+            Submit
+          </button>
         </div>
-        <div className="updateUserForm">
+        <div className="createExerciseForm">
           POST /api/exercise/add
-          <input className="update_input" placeholder="userId*" />
-          <input className="update_input" placeholder="description*" />
-          <input className="update_input" placeholder="duration*(mins.)" />
-          <input className="update_input" placeholder="date(yyyy-mm-dd)" />
-          <button>Submit</button>
+          <input
+            className="exercise_input"
+            id="exInput_userId"
+            placeholder="userId*"
+            onChange={event => this.handleChange("userId", event.target.value)}
+            type="text"
+            required
+          />
+          <input
+            className="exercise_input"
+            id="exInput_description"
+            placeholder="description*"
+            onChange={event =>
+              this.handleChange("description", event.target.value)
+            }
+            type="text"
+            required
+          />
+          <input
+            className="exercise_input"
+            id="exInput_duration"
+            placeholder="duration*(mins.)"
+            onChange={event =>
+              this.handleChange("duration", event.target.value)
+            }
+            type="number"
+            required
+          />
+          <input
+            className="exercise_input"
+            id="exInput_date"
+            placeholder="date(yyyy-mm-dd)"
+            onChange={event => this.handleChange("date", event.target.value)}
+            type="text"
+            required
+          />
+          <button onClick={this.handleSubmit} name="submitNewExercise">
+            Submit
+          </button>
+          <br/>
           GET users's exercise log: GET /api/exercise/log?USERID
           [&from][&to][&limit]
           {} = required, [ ] = optional from, to = dates (yyyy-mm-dd); limit =

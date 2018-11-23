@@ -3,10 +3,32 @@ body {
   padding: 0;
 }
 
+#root {
+  font-size: 1rem;
+}
+
 .App {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+.App_title {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 10px 0px;;
+}
+
+/* General */
+button {
+  background: grey;
+  font-size: 1rem;
+  padding: 5px 10px;
+}
+
+button:hover {
+  cursor: pointer;
+  background: white;
 }
 
 .createUserForm {
@@ -15,20 +37,28 @@ body {
   flex-direction: column;
   text-align: center;
   background: dodgerblue;
+  padding: 20px 10px;
 }
 
-.create_input {
+.user_input {
   width: 200px;
+  margin: 10px 0px;
+  height: 20px;
+  font-size: 1rem;
 }
 
-.updateUserForm {
+.createExerciseForm {
   display: flex;
   align-items: center;
   flex-direction: column;
   text-align: center;
   background: lightgreen;
+  padding: 20px 10px;
 }
 
-.update_input {
+.exercise_input {
+  margin: 10px 0px;
   width: 200px;
+  height: 20px;
+  font-size: 1rem;
 }
