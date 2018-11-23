@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./styles.css";
 import axios from "axios";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRunning } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRunning } from "@fortawesome/free-solid-svg-icons";
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class App extends Component {
       description: null,
       duration: null,
       date: null,
-      redirect: false,
+      redirect: false
     };
   }
 
@@ -25,78 +25,93 @@ class App extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const {userId, description, duration, date, newUser, URL } = this.state
+    const { userId, description, duration, date, newUser, URL } = this.state;
     if (e.target.name === "submitNewUser") {
       if (newUser === "") {
         alert("Sorry! Please enter a username!");
         return;
       }
-      axios
-        .post(`${URL}api/exercise/new-user/`, {
-          username: newUser
-        })
-        .then(response => {
-          alert(`New User ${newUser} Successfully Added!`)
-          window.location.href = `${URL}api/exercise/users/${response.data._id}`;
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      axios.get(`${URL}api/exercise/users/`).then(response => {
+        if (!response.data.every(item => item.username !== newUser)) {
+          alert("Sorry! That name is already taken! Please choose another!");
+          return;
+        } else {
+          axios
+            .post(`${URL}api/exercise/new-user/`, {
+              username: newUser
+            })
+            .then(response => {
+              alert(`New User ${newUser} Successfully Added!`);
+              window.location.href = `${URL}api/exercise/users/${
+                response.data._id
+              }`;
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
+      });
     }
 
     if (e.target.name === "submitNewExercise") {
       if (userId === null) {
         alert("Sorry! A valid userId is required");
-        return
+        return;
       }
-      if (description === null){
+      if (description === null) {
         alert("Sorry! A valid description is required");
-        return
+        return;
       }
-      if (duration === null){
+      if (duration === null) {
         alert("Sorry! A valid duration is required");
-        return
+        return;
       }
-      if (date === null){
+      if (date === null) {
         alert("Sorry! A valid date is required");
-        return
-      } else if (!Date.parse(date)){
-        alert("Please ensure the date provided is both valid and correctly formatted (e.g. YYYY-MM-DD)")
+        return;
+      } else if (!Date.parse(date)) {
+        alert(
+          "Please ensure the date provided is both valid and correctly formatted (e.g. YYYY-MM-DD)"
+        );
       }
-      
-      if (userId&&description&&duration&&Date.parse(date)){
+
+      if (userId && description && duration && Date.parse(date)) {
         axios
-        .get(`${URL}api/exercise/users/${userId}`)
-        .then(response => {
-          axios
-            .post(`${URL}api/exercise/new-exercise/`, {
-              username: response.data.username,
-              userId: userId,
-              description: description,
-              duration: duration,
-              date: date
-            })
-            .then(response => {
-              alert("New Exercise Added!")
-              window.location.href = `${URL}api/exercise/logs/${response.data._id}`;
-            })
-            .catch(err => {
-              console.log(err);
-            });
-        })
-        .catch(err => {
-          console.log(err);
-          alert("Please make sure you enter a valid userId");
-        });
+          .get(`${URL}api/exercise/users/${userId}`)
+          .then(response => {
+            axios
+              .post(`${URL}api/exercise/new-exercise/`, {
+                username: response.data.username,
+                userId: userId,
+                description: description,
+                duration: duration,
+                date: date
+              })
+              .then(response => {
+                alert("New Exercise Added!");
+                window.location.href = `${URL}api/exercise/logs/${
+                  response.data._id
+                }`;
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          })
+          .catch(err => {
+            console.log(err);
+            alert("Please make sure you enter a valid userId");
+          });
       }
-      
     }
   };
 
   render() {
     return (
       <div className="App">
-        <div className="App_title">Exercise Tracker <FontAwesomeIcon icon={faRunning} className="faRunning"/></div>
+        <div className="App_title">
+          Exercise Tracker{" "}
+          <FontAwesomeIcon icon={faRunning} className="faRunning" />
+        </div>
         <div className="createUserForm">
           POST /api/exercise/new-user
           <input
@@ -152,7 +167,7 @@ class App extends Component {
           <button onClick={this.handleSubmit} name="submitNewExercise">
             Submit
           </button>
-          <br/>
+          <br />
           {/* GET users's exercise log: GET /api/exercise/log?USERID
           [&from][&to][&limit]
           {} = required, [ ] = optional from, to = dates (yyyy-mm-dd); limit =
