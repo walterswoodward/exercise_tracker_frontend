@@ -228,7 +228,7 @@ class App extends Component {
                   {" "}
                   Jasper's exercise logs from 2018-10-01 to 2018-11-01
                 </a>
-                . Jasper didn't exercise much in October!
+                . Looks like Jasper took October off!
               </div>
             </div>
           </div>
