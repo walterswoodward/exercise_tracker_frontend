@@ -42,7 +42,7 @@ class App extends Component {
             })
             .then(response => {
               alert(
-                `New User ${newUser} Successfully Added! You will be redirected to your new profile data. Please save your userId to add exercises!`
+                `New User ${newUser} Successfully Added! You will be redirected to your new profile data. Please save your id to add exercises!`
               );
               window.location.href = `${URL}api/exercise/users/${
                 response.data._id
