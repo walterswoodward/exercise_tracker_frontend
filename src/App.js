@@ -112,114 +112,124 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="content">
-          <div className="App_title">
-            Exercise Tracker{" "}
-            <FontAwesomeIcon icon={faRunning} className="faRunning" />
-          </div>
-          <div className="createUserForm">
-            Create a new user name here!
-            <input
-              className="user_input"
-              placeholder="username"
-              onChange={event =>
-                this.handleChange("newUser", event.target.value)
-              }
-              type="text"
-              value={this.state.newUser}
-              required
-            />
-            <button onClick={this.handleSubmit} name="submitNewUser">
-              Submit
-            </button>
-          </div>
-          <div className="createExerciseForm">
-            Create a new exercise log here!
-            <input
-              className="exercise_input"
-              id="exInput_userId"
-              placeholder="userId*"
-              onChange={event =>
-                this.handleChange("userId", event.target.value)
-              }
-              type="text"
-              required
-            />
-            <input
-              className="exercise_input"
-              id="exInput_description"
-              placeholder="description*"
-              onChange={event =>
-                this.handleChange("description", event.target.value)
-              }
-              type="text"
-              required
-            />
-            <input
-              className="exercise_input"
-              id="exInput_duration"
-              placeholder="duration*(mins.)"
-              onChange={event =>
-                this.handleChange("duration", event.target.value)
-              }
-              type="number"
-              required
-            />
-            <input
-              className="exercise_input"
-              id="exInput_date"
-              placeholder="date(yyyy-mm-dd)"
-              onChange={event => this.handleChange("date", event.target.value)}
-              type="text"
-              required
-            />
-            <button onClick={this.handleSubmit} name="submitNewExercise">
-              Submit
-            </button>
-            <br />
-          </div>
-        </div>
+        <div className="container">
+          <div className="content">
+            <div className="App_title">
+              Exercise Tracker{" "}
+              <FontAwesomeIcon icon={faRunning} className="faRunning" />
+            </div>
+            <div className="createUserForm">
+            <div className="createUserLabel">
+              Create a new user name here!
+              </div>
+              <input
+                className="user_input"
+                placeholder="username"
+                onChange={event =>
+                  this.handleChange("newUser", event.target.value)
+                }
+                type="text"
+                value={this.state.newUser}
+                required
+              />
+              <button onClick={this.handleSubmit} name="submitNewUser">
+                Submit
+              </button>
+            </div>
+            <div className="createExerciseForm">
+            <div className="createExLabel">
+              Create a new exercise log here!
 
-        <div className="guidelines">
-          <div className="guidelines_title"> Querying Exercise Logs </div>
-          <div className="guidelines_paragraphs">
-          <div className="paragraphs_intro">
-            {" "}
-            If you'd like to query an exercise log, you will need the userId
-            associated with your account. Som example queries on Jasper's account are provided below.
             </div>
-            <div className="guidelines_paragraph">
-              This link will show you all of{" "}
-              <a
-                href="https://exercise-tracker-backend.herokuapp.com/api/exercise/log?userId=5bf7a334e52b0900047f60ec"
-                alt="Jasper's exercise logs"
-              >
-                {" "}
-                Jasper's exercise logs
-              </a>
-              .
+              <input
+                className="exercise_input"
+                id="exInput_userId"
+                placeholder="userId*"
+                onChange={event =>
+                  this.handleChange("userId", event.target.value)
+                }
+                type="text"
+                required
+              />
+              <input
+                className="exercise_input"
+                id="exInput_description"
+                placeholder="description*"
+                onChange={event =>
+                  this.handleChange("description", event.target.value)
+                }
+                type="text"
+                required
+              />
+              <input
+                className="exercise_input"
+                id="exInput_duration"
+                placeholder="duration*(mins.)"
+                onChange={event =>
+                  this.handleChange("duration", event.target.value)
+                }
+                type="number"
+                required
+              />
+              <input
+                className="exercise_input"
+                id="exInput_date"
+                placeholder="date(yyyy-mm-dd)"
+                onChange={event =>
+                  this.handleChange("date", event.target.value)
+                }
+                type="text"
+                required
+              />
+              <button onClick={this.handleSubmit} name="submitNewExercise">
+                Submit
+              </button>
+              <br />
             </div>
-            <div className="guidelines_paragraph">
-              This link will query only{" "}
-              <a
-                href="https://exercise-tracker-backend.herokuapp.com/api/exercise/log?userId=5bf7a334e52b0900047f60ec&limit=3"
-                alt="Jasper's exercise logs"
-              >
+          </div>
+
+          <div className="guidelines">
+            <div className="guidelines_title"> Querying Exercise Logs </div>
+            <div className="guidelines_paragraphs">
+              <div className="paragraphs_intro">
                 {" "}
-                three of Jasper's exercise logs
-              </a>
-              .
-            </div>
-            <div className="guidelines_paragraph">
-              Lastly, this link will query{" "}
-              <a
-                href="https://exercise-tracker-backend.herokuapp.com/api/exercise/log?userId=5bf7a334e52b0900047f60ec&limit=3"
-                alt="Jasper's exercise logs"
-              >
-                {" "}
-                Jasper's exercise logs from 2018-10-01 to 2018-11-01
-              </a>
-              . Jasper didn't exercise much in October!
+                If you'd like to query an exercise log, you will need the userId
+                associated with your account. Som example queries on Jasper's
+                account are provided below.
+              </div>
+              <div className="guidelines_paragraph">
+                This link will show you all of{" "}
+                <a
+                  href="https://exercise-tracker-backend.herokuapp.com/api/exercise/log?userId=5bf7a334e52b0900047f60ec"
+                  alt="Jasper's exercise logs"
+                >
+                  {" "}
+                  Jasper's exercise logs
+                </a>
+                .
+              </div>
+              <div className="guidelines_paragraph">
+                This link will query only{" "}
+                <a
+                  href="https://exercise-tracker-backend.herokuapp.com/api/exercise/log?userId=5bf7a334e52b0900047f60ec&limit=3"
+                  alt="Jasper's exercise logs"
+                >
+                  {" "}
+                  three of Jasper's exercise logs
+                </a>
+                .
+              </div>
+              <div className="guidelines_paragraph">
+                Lastly, this link will query{" "}
+                <a
+                  href="https://exercise-tracker-backend.herokuapp.com/api/exercise/log?userId=5bf7a334e52b0900047f60ec&limit=3"
+                  alt="Jasper's exercise logs"
+                >
+                  {" "}
+                  Jasper's exercise logs from 2018-10-01 to 2018-11-01
+                </a>
+                . Jasper didn't exercise much in October!
+              </div>
             </div>
           </div>
         </div>

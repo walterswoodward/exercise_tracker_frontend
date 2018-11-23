@@ -82,14 +82,18 @@ input {
   align-items: center;
   flex-direction: column;
   text-align: center;
-  background: rgba(0, 0, 0,0.5);
+  /* background: rgba(0, 0, 0,0.5); */
   padding: 20px 10px;
   width: 250px;
   border-radius: 5px;
 }
 
+.createUserLabel {
+  margin-bottom: 10px;
+}
+
 .user_input {
-  width: 200px;
+  width: 80%;
   margin: 10px 0px;
   height: 20px;
   font-size: 1rem;
@@ -100,16 +104,20 @@ input {
   align-items: center;
   flex-direction: column;
   text-align: center;
-  background: rgba(0, 0, 0,0.5);
+  /* background: rgba(0, 0, 0,0.5); */
   padding: 20px 10px 0px 10px;
   width: 250px;
   margin-top: 10px;
   border-radius: 5px;
 }
 
+.createExLabel {
+  margin-bottom: 15px;
+}
+
 .exercise_input {
   margin: 5px 0px;
-  width: 200px;
+  width: 80%;
   height: 20px;
   font-size: 1rem;
 }
@@ -117,7 +125,7 @@ input {
 .guidelines {
   margin-top: 10px;
   font-size: 1rem;
-  background: rgba(0, 0, 0,0.5);
+  /* background: rgba(0, 0, 0,0.5); */
   border-radius: 5px;
   width: 230px;
   padding: 20px;
@@ -131,7 +139,7 @@ input {
 
 .guidelines_paragraph {
   padding: 5px;
-  background: rgba(0,0,0,0.5);
+  /* background: rgba(0,0,0,0.5); */
   border-radius: 5px;
   margin: 5px 0px;
 }
@@ -148,21 +156,35 @@ input {
     height: 90vh;
     max-width: 1000px;
   }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: rgba(0, 0, 0,0.4);
+    width: 90%;
+    border-radius: 5px;
+    padding: 5px 0px;
+
+
+  }
+
   .content{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin: 0;
     padding: 0;
     width: 46%;
     height: 80vh;
   }
   .createUserForm {
-    width: 90%;
+    width: 100%;
   }
   .createExerciseForm{
-    width: 90%;
+    width: 100%;
   }
+
   .guidelines {
     margin: 0;
     box-sizing: border-box;
