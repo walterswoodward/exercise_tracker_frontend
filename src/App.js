@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      URL: "http://localhost:5000/",
+      URL: "https://exercise-tracker-backend.herokuapp.com/",
       newUser: "",
       userId: null,
       username: null,
@@ -41,7 +41,7 @@ class App extends Component {
               username: newUser
             })
             .then(response => {
-              alert(`New User ${newUser} Successfully Added!`);
+              alert(`New User ${newUser} Successfully Added! You will be redirected to your new profile data. Please save your userId to add exercises!`);
               window.location.href = `${URL}api/exercise/users/${
                 response.data._id
               }`;
@@ -88,7 +88,7 @@ class App extends Component {
                 date: date
               })
               .then(response => {
-                alert("New Exercise Added!");
+                alert(`WOOHOO! Keep up the great work ${response.data.username}!`);
                 window.location.href = `${URL}api/exercise/logs/${
                   response.data._id
                 }`;

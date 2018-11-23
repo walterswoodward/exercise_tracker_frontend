@@ -15,15 +15,17 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: grey;
+  background: rgb(80, 80, 80);
   width: 300px;
-  padding: 0px 0px 20px 0px;
+  padding: 0px 0px 15px 0px;
   margin: auto auto;
   margin-top: 20px;
   border-radius: 5px;
+  font-family: 'Noto Sans SC', sans-serif;
 }
 
 .App_title {
+  font-family: 'Londrina Sketch', cursive;
   font-size: 2rem;
   font-weight: bold;
   padding: 10px 0px;;
@@ -42,11 +44,17 @@ button {
   border: none;
   border-radius: 5px;
   margin: 5px;
+  font-family: 'Noto Sans SC', sans-serif;
 }
 
 button:hover {
   cursor: pointer;
   background: rgba(0, 0, 0,0.5);
+  color: white;
+}
+
+input {
+  font-family: 'Noto Sans SC', sans-serif;
 }
 
 .createUserForm {
