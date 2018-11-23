@@ -222,7 +222,7 @@ class App extends Component {
               <div className="guidelines_paragraph">
                 Lastly, this link will query{" "}
                 <a
-                  href="https://exercise-tracker-backend.herokuapp.com/api/exercise/log?userId=5bf7a334e52b0900047f60ec&limit=3"
+                  href="https://exercise-tracker-backend.herokuapp.com/api/exercise/log?userId=5bf7a334e52b0900047f60ec&from=2018-10-01&to=2018-11-01"
                   alt="Jasper's exercise logs"
                 >
                   {" "}
