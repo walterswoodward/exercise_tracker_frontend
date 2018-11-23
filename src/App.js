@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./styles.css";
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRunning } from '@fortawesome/free-solid-svg-icons';
 
 class App extends Component {
   constructor(props) {
@@ -23,9 +25,7 @@ class App extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
     const {userId, description, duration, date, newUser, URL } = this.state
-
     if (e.target.name === "submitNewUser") {
       if (newUser === "") {
         alert("Sorry! Please enter a username!");
@@ -96,7 +96,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App_title">Exercise Tracker</div>
+        <div className="App_title">Exercise Tracker <FontAwesomeIcon icon={faRunning} className="faRunning"/></div>
         <div className="createUserForm">
           POST /api/exercise/new-user
           <input
@@ -153,10 +153,10 @@ class App extends Component {
             Submit
           </button>
           <br/>
-          GET users's exercise log: GET /api/exercise/log?USERID
+          {/* GET users's exercise log: GET /api/exercise/log?USERID
           [&from][&to][&limit]
           {} = required, [ ] = optional from, to = dates (yyyy-mm-dd); limit =
-          number
+          number */}
         </div>
       </div>
     );

@@ -1,6 +1,8 @@
 body {
   margin: 0;
   padding: 0;
+  background: black;
+  color: white;
 }
 
 #root {
@@ -10,7 +12,15 @@ body {
 .App {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  background: grey;
+  width: 300px;
+  padding: 0px 0px 20px 0px;
+  margin: auto auto;
+  margin-top: 20px;
+  border-radius: 5px;
 }
 
 .App_title {
@@ -19,16 +29,24 @@ body {
   padding: 10px 0px;;
 }
 
-/* General */
+.faRunning {
+  color: black;
+  font-size: 1.6rem;
+}
+
+/* tag styling */
 button {
-  background: grey;
+  background: rgba(255, 255, 255,0.5);
   font-size: 1rem;
   padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
 }
 
 button:hover {
   cursor: pointer;
-  background: white;
+  background: rgba(0, 0, 0,0.5);
 }
 
 .createUserForm {
@@ -36,8 +54,10 @@ button:hover {
   align-items: center;
   flex-direction: column;
   text-align: center;
-  background: dodgerblue;
+  background: rgba(30, 144, 255,0.5);
   padding: 20px 10px;
+  width: 250px;
+  border-radius: 5px;
 }
 
 .user_input {
@@ -52,8 +72,11 @@ button:hover {
   align-items: center;
   flex-direction: column;
   text-align: center;
-  background: lightgreen;
-  padding: 20px 10px;
+  background: rgba(144, 238, 144,0.5);
+  padding: 20px 10px 0px 10px;
+  width: 250px;
+  margin-top: 20px;
+  border-radius: 5px;
 }
 
 .exercise_input {
