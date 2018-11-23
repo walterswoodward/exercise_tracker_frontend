@@ -47,7 +47,7 @@ a:hover
   font-family: 'Londrina Sketch', cursive;
   font-size: 2rem;
   font-weight: bold;
-  padding: 10px 0px;;
+  padding: 0px 0px;;
   color: white;
 }
 
@@ -103,19 +103,19 @@ input {
   background: rgba(0, 0, 0,0.5);
   padding: 20px 10px 0px 10px;
   width: 250px;
-  margin-top: 20px;
+  margin-top: 10px;
   border-radius: 5px;
 }
 
 .exercise_input {
-  margin: 10px 0px;
+  margin: 5px 0px;
   width: 200px;
   height: 20px;
   font-size: 1rem;
 }
 
 .guidelines {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 1rem;
   background: rgba(0, 0, 0,0.5);
   border-radius: 5px;

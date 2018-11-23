@@ -186,8 +186,7 @@ class App extends Component {
           <div className="paragraphs_intro">
             {" "}
             If you'd like to query an exercise log, you will need the userId
-            associated with your account. To test this feature and/or familiarize yourself with URL query parameters, you can use
-            Jasper's account.
+            associated with your account. Som example queries on Jasper's account are provided below.
             </div>
             <div className="guidelines_paragraph">
               This link will show you all of{" "}
