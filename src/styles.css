@@ -35,7 +35,7 @@ a:hover
   /* background-image: url("https://res.cloudinary.com/pacmankana/image/upload/v1542956386/exercise_tracker/concrete.png"); */
   background-image: url("https://res.cloudinary.com/pacmankana/image/upload/v1543005835/exercise_tracker/road.jpg");
   /* background-size: contain; */
-  width: 90%;
+  width: 300px;
   padding: 0px 0px 15px 0px;
   margin: auto auto;
   margin-top: 20px;
