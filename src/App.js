@@ -176,50 +176,6 @@ class App extends Component {
               <br />
             </div>
           </div>
-
-          <div className="guidelines">
-            <div className="guidelines_title"> Querying Exercise Logs </div>
-            <div className="guidelines_paragraphs">
-              <div className="paragraphs_intro">
-                {" "}
-                If you'd like to query an exercise log, you will need the userId
-                associated with your account. Example queries are provided below.
-              </div>
-              <div className="guidelines_paragraph">
-                This link will show you all of{" "}
-                <a
-                  href="https://exercise-tracker-backend.herokuapp.com/api/exercise/log?userId=5bf7a334e52b0900047f60ec"
-                  alt="Jasper's exercise logs"
-                >
-                  {" "}
-                  Jasper's exercise logs
-                </a>
-                .
-              </div>
-              <div className="guidelines_paragraph">
-                This link will query only{" "}
-                <a
-                  href="https://exercise-tracker-backend.herokuapp.com/api/exercise/log?userId=5bf7a334e52b0900047f60ec&limit=3"
-                  alt="Jasper's exercise logs"
-                >
-                  {" "}
-                  three of Jasper's exercise logs
-                </a>
-                .
-              </div>
-              <div className="guidelines_paragraph">
-                Lastly, this link will query{" "}
-                <a
-                  href="https://exercise-tracker-backend.herokuapp.com/api/exercise/log?userId=5bf7a334e52b0900047f60ec&from=2018-10-01&to=2018-11-01"
-                  alt="Jasper's exercise logs"
-                >
-                  {" "}
-                  Jasper's exercise logs from 2018-10-01 to 2018-11-01
-                </a>
-                . Looks like Jasper took October off!
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     );
