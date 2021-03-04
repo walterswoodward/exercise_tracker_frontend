@@ -1,0 +1,29 @@
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    max-width: $body__max-width;
+    margin: 0px auto;
+  }
+
+  #root {
+    width: 100%;
+    letter-spacing: 1.5px;
+    font-family: $base__font;
+    background: whitesmoke;
+    color: black;
+  }
+
+  a {
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+
+  ::placeholder {
+    color: white;
+  }
