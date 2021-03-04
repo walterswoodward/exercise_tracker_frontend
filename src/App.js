@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      URL: "https://exercise-tracker-backend.herokuapp.com/",
+      URL: "https://exercise-tracker-backend.herokuapp.com",
       newUser: "",
       userId: null,
       username: null,
@@ -31,27 +31,28 @@ class App extends Component {
         alert("Sorry! Please enter a username!");
         return;
       }
-      axios.get(`${URL}api/exercise/users/`).then(response => {
-        if (!response.data.every(item => item.username !== newUser)) {
-          alert("Sorry! That name is already taken! Please choose another!");
-          return;
-        } else {
+      
+      axios.get(`${URL}/api/exercise/users/`).then(response => {
+        // if (!response.data.every(item => item.username !== newUser)) {
+        //   alert("Sorry! That name is already taken! Please choose another!");
+        //   return;
+        // } else {
           axios
-            .post(`${URL}api/exercise/new-user/`, {
+            .post(`${URL}/api/exercise/new-user/`, {
               username: newUser
             })
             .then(response => {
               alert(
                 `New User ${newUser} Successfully Added! You will be redirected to your new profile data. Please save your id to add exercises!`
               );
-              window.location.href = `${URL}api/exercise/users/${
+              window.location.href = `${URL}/api/exercise/users/${
                 response.data._id
               }`;
             })
             .catch(err => {
               console.log(err);
             });
-        }
+        // }
       });
     }
 
@@ -79,10 +80,10 @@ class App extends Component {
 
       if (userId && description && duration && Date.parse(date)) {
         axios
-          .get(`${URL}api/exercise/users/${userId}`)
+          .get(`${URL}/api/exercise/users/${userId}`)
           .then(response => {
             axios
-              .post(`${URL}api/exercise/new-exercise/`, {
+              .post(`${URL}/api/exercise/new-exercise/`, {
                 username: response.data.username,
                 userId: userId,
                 description: description,
@@ -93,7 +94,7 @@ class App extends Component {
                 alert(
                   `WOOHOO! Keep up the great work ${response.data.username}!`
                 );
-                window.location.href = `${URL}api/exercise/logs/${
+                window.location.href = `${URL}/api/exercise/logs/${
                   response.data._id
                 }`;
               })
@@ -108,6 +109,24 @@ class App extends Component {
       }
     }
   };
+
+  componentDidMount () {
+    axios
+    .post(`${this.state.URL}/api/exercise/new-user/`, {
+      username: 'Walter'
+    })
+    .then(response => {
+      alert(
+        `New User Walter Successfully Added! You will be redirected to your new profile data. Please save your id to add exercises!`
+      );
+      window.location.href = `${this.state.URL}/api/exercise/users/${
+        response.data._id
+      }`;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
 
   render() {
     return (
