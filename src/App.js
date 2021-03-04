@@ -27,33 +27,21 @@ class App extends Component {
     e.preventDefault();
     const { userId, description, duration, date, newUser, URL } = this.state;
     if (e.target.name === "submitNewUser") {
-      if (newUser === "") {
-        alert("Sorry! Please enter a username!");
-        return;
-      }
+        if (newUser === "") {
+            alert("Sorry! Please enter a username!");
+            return;
+        }
       
-      axios.get(`${URL}/api/exercise/users/`).then(response => {
-        // if (!response.data.every(item => item.username !== newUser)) {
-        //   alert("Sorry! That name is already taken! Please choose another!");
-        //   return;
-        // } else {
-          axios
-            .post(`${URL}/api/exercise/new-user/`, {
-              username: newUser
-            })
-            .then(response => {
-              alert(
-                `New User ${newUser} Successfully Added! You will be redirected to your new profile data. Please save your id to add exercises!`
-              );
-              window.location.href = `${URL}/api/exercise/users/${
-                response.data._id
-              }`;
-            })
-            .catch(err => {
-              console.log(err);
-            });
-        // }
-      });
+        axios
+        .post(`${URL}/api/exercise/new-user/`, {
+            username: newUser
+        })
+        .then(response => {
+            alert(`New User ${newUser} Successfully Added! You will be redirected to your new profile data. Please save your id to add exercises!`);
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 
     if (e.target.name === "submitNewExercise") {
@@ -109,24 +97,6 @@ class App extends Component {
       }
     }
   };
-
-  componentDidMount () {
-    axios
-    .post(`${this.state.URL}/api/exercise/new-user/`, {
-      username: 'Walter'
-    })
-    .then(response => {
-      alert(
-        `New User Walter Successfully Added! You will be redirected to your new profile data. Please save your id to add exercises!`
-      );
-      window.location.href = `${this.state.URL}/api/exercise/users/${
-        response.data._id
-      }`;
-    })
-    .catch(err => {
-      console.log(err);
-    });
-  }
 
   render() {
     return (
