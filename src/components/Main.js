@@ -1,12 +1,9 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRunning } from "@fortawesome/free-solid-svg-icons";
 
-import Header from './components/Header.js';
-import Main from './components/Main.js';
-
-class App extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -101,13 +98,87 @@ class App extends Component {
   };
 
   render() {
-      return (
-          <Fragment>
-              <Header/>
-              <Main/>
-          </Fragment>
-      )
+    return (
+      <div className="Main">
+        <div className="container">
+          <div className="content">
+            <div className="Main_title">
+              Exercise Tracker{" "}
+              <FontAwesomeIcon icon={faRunning} className="faRunning" />
+            </div>
+            <div className="createUserForm">
+            <div className="createUserLabel">
+              Create a new user name here!
+              </div>
+              <input
+                className="user_input"
+                placeholder="username"
+                onChange={event =>
+                  this.handleChange("newUser", event.target.value)
+                }
+                type="text"
+                value={this.state.newUser}
+                required
+              />
+              <button onClick={this.handleSubmit} name="submitNewUser">
+                Submit
+              </button>
+            </div>
+            <div className="createExerciseForm">
+            <div className="createExLabel">
+              Create a new exercise log here!
+
+            </div>
+              <input
+                className="exercise_input"
+                id="exInput_userId"
+                placeholder="userId*"
+                onChange={event =>
+                  this.handleChange("userId", event.target.value)
+                }
+                type="text"
+                required
+              />
+              <input
+                className="exercise_input"
+                id="exInput_description"
+                placeholder="description*"
+                onChange={event =>
+                  this.handleChange("description", event.target.value)
+                }
+                type="text"
+                required
+              />
+              <input
+                className="exercise_input"
+                id="exInput_duration"
+                placeholder="duration*(mins.)"
+                onChange={event =>
+                  this.handleChange("duration", event.target.value)
+                }
+                type="number"
+                required
+              />
+              <input
+                className="exercise_input"
+                id="exInput_date"
+                placeholder="date(yyyy-mm-dd)"
+                onChange={event =>
+                  this.handleChange("date", event.target.value)
+                }
+                type="text"
+                required
+              />
+              <button onClick={this.handleSubmit} name="submitNewExercise">
+                Submit
+              </button>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
-export default App;
+export default Main;
