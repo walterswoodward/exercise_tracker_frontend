@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./styles.css";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRunning } from "@fortawesome/free-solid-svg-icons";
