@@ -5,6 +5,8 @@ import { faRunning } from "@fortawesome/free-solid-svg-icons";
 
 import Header from './components/Header.js';
 import Main from './components/Main.js';
+import Footer from './components/Footer.js';
+
 
 class App extends Component {
   constructor(props) {
@@ -105,6 +107,7 @@ class App extends Component {
           <Fragment>
               <Header/>
               <Main/>
+              <Footer/>
           </Fragment>
       )
   }
